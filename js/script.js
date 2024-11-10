@@ -34,8 +34,8 @@ async function displayCity() {
     let zipError = document.querySelector("#zipError");
     // console.log(data);
     if(data==false){
-        zipError.innerHTML = "This zipcode does not exist";
-        zipError.style.color = "red";
+        zipError.innerHTML = "Zipcode does not exist";
+        zipError.style.color = "#FDBCB4";
     }else{
         zipError.innerHTML = "";
         document.querySelector("#city").innerHTML = data.city;
@@ -67,10 +67,10 @@ async function checkUsername(){
     let usernameError = document.querySelector("#usernameError");
     if(data.available){
         usernameError.innerHTML = "Username available!";
-        usernameError.style.color = "green";
+        usernameError.style.color = "#A7E8BD";
     }else{
         usernameError.innerHTML = "Username not available!";
-        usernameError.style.color = "red";
+        usernameError.style.color = "#FDBCB4";
     }
 }
 
@@ -78,9 +78,12 @@ async function checkUsername(){
 function validateForm(e){
     let isValid = true;
     let username = document.querySelector("#username").value;
+    let usernameError = document.querySelector("#usernameError");
     if(username.length==0){
         document.querySelector("#usernameError").innerHTML = "Username Required!";
-        document.querySelector("#usernameError").style.color = "red";
+        document.querySelector("#usernameError").style.color = "#FDBCB4";
+        isValid = false;
+    }else if(usernameError.innerHTML!="Username available!"){
         isValid = false;
     }
     let password = document.querySelector("#password").value;
@@ -89,11 +92,11 @@ function validateForm(e){
 
     if(password.length<6){
         passError.innerHTML = "Password must be at least 6 characters";
-        passError.style.color = "red";
+        passError.style.color = "#FDBCB4";
         isValid = false;
     }else if(password!=confirmPassword){
         passError.innerHTML = "Passwords must match";
-        passError.style.color = "red";
+        passError.style.color = "#FDBCB4";
         isValid = false;
     }else{
         document.querySelector("#passwordError").innerHTML = "";
